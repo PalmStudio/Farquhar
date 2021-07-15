@@ -53,7 +53,7 @@ O=210 #Intracellular concentration of O2 (mmol mol−1)
 
 shinyServer(function(input, output) {
   
-  source('Functions_Farquhar_Fitting.R')
+  source('1-code/Functions_Farquhar_Fitting.R')
   
   filedata <- reactive({
     infile <- input$file1

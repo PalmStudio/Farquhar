@@ -63,18 +63,18 @@ theta=0.853 #Empirical curvature factor for the response of J to PFD
 O=210 #Intracellular concentration of O2 (mmol mol−1)
 
 # Import functions --------------------------------------------------------
-source('Functions_Farquhar_Fitting.R')
+source('1-code/Functions_Farquhar_Fitting.R')
 
 
 # Import data -------------------------------------------------------------
 
 ###A-Ci curves
 datC= 
-  data.table::fread("Data/CO2curveEX.csv", data.table = FALSE)%>%
+  data.table::fread("0-data/CO2curveEX.csv", data.table = FALSE)%>%
   mutate(Sample=paste(Progeny,Tree,Frond,sep='_'))
 
 ###A-PFD curves
-datPFD= data.table::fread("Data/lightcurveEX.csv", data.table = FALSE)%>%
+datPFD= data.table::fread("0-data/lightcurveEX.csv", data.table = FALSE)%>%
   mutate(Sample= paste(Progeny,Tree,Frond,Date,sep='_'),
          Date= dmy(Date))
 

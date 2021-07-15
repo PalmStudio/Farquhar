@@ -1,9 +1,11 @@
 library(plantecophys)
+library(tidyverse)
+library(lubridate)
 
 
 # A-Ci curves
 datC= 
-  data.table::fread("Data/CO2curveEX.csv", data.table = FALSE)%>%
+  data.table::fread("0-data/CO2curveEX.csv", data.table = FALSE)%>%
   mutate(Sample=paste(Progeny,Tree,Frond,sep='_'))%>%
   rename(Photo= A, PARi= PFD)
 
@@ -51,6 +53,10 @@ coef(fit_TPU)
 
 
 ###A-PFD curves
-datPFD= data.table::fread("Data/lightcurveEX.csv", data.table = FALSE)%>%
+datPFD= data.table::fread("0-data/lightcurveEX.csv", data.table = FALSE)%>%
   mutate(Sample= paste(Progeny,Tree,Frond,Date,sep='_'),
          Date= dmy(Date))
+
+datPFD%>%
+  ggplot(aes(x=PFD,y=A))+
+  geom_point()
